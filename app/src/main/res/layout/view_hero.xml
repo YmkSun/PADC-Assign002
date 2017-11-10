@@ -1,53 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rv_view_hero"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <ImageView
-        android:id="@+id/rv_img_hero"
-        android:layout_width="150dp"
-        android:layout_height="330dp"
-        android:scaleType="centerCrop" />
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="270dp"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/layout_padding"
+    android:padding="@dimen/card_padding"
+    card_view:cardCornerRadius="4dp">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/rv_view_hero"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:padding="@dimen/layout_padding"
+        android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tv_hero_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
+        <ImageView
+            android:id="@+id/rv_img_hero"
+            android:layout_width="120dp"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/img_margin"/>
 
-        <TextView
-            android:id="@+id/tv_hero_gender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/txt_img_margin_left"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_hero_bio"
+                android:id="@+id/tv_hero_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:textSize="@dimen/tv_name_txt_size"
+                android:paddingBottom="@dimen/layout_padding"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/accent"/>
 
-        </ScrollView>
+            <TextView
+                android:id="@+id/tv_hero_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/tv_gender_txt_size"
+                android:padding="@dimen/tv_gender_padding"
+                android:textColor="@color/text"
+                android:textStyle="italic"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/button_overview"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_hero_bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="gravity"/>
+
+            </ScrollView>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/button_overview"
+                android:textSize="@dimen/btn_txt_size"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>
