@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="button_overview">Hero Overview</string>
+
+    <string name="hero_list">HEROES</string>
+    <string name="male_heroes">MALE</string>
+    <string name="female_heroes">FEMALE</string>
 </resources>

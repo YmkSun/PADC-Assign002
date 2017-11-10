@@ -1,8 +1,10 @@
-package com.androidapp.yemyokyaw.dcheroes;
+package com.androidapp.yemyokyaw.dcheroes.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +15,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.androidapp.yemyokyaw.dcheroes.R;
+import com.androidapp.yemyokyaw.dcheroes.adapter.HeroPagerAdapter;
+import com.androidapp.yemyokyaw.dcheroes.fragment.FemaleHeroesFragment;
+import com.androidapp.yemyokyaw.dcheroes.fragment.HeroesListFragment;
+import com.androidapp.yemyokyaw.dcheroes.fragment.MaleHeroesFragment;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    TabLayout tlHeroes;
+    ViewPager pagerHeroes;
+
+    HeroPagerAdapter mHeroPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,10 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        tlHeroes = (TabLayout) findViewById(R.id.tl_heroes);
+        pagerHeroes = (ViewPager) findViewById(R.id.pager_heroes);
+        navigateToTabLayout();
     }
 
     @Override
@@ -97,5 +114,14 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void navigateToTabLayout() {
+        mHeroPagerAdapter = new HeroPagerAdapter(getSupportFragmentManager());
+        mHeroPagerAdapter.addTab(HeroesListFragment.newInstance(), getString(R.string.hero_list));
+        mHeroPagerAdapter.addTab(MaleHeroesFragment.newInstance(), getString(R.string.male_heroes));
+        mHeroPagerAdapter.addTab(FemaleHeroesFragment.newInstance(), getString(R.string.female_heroes));
+        pagerHeroes.setAdapter(mHeroPagerAdapter);
+        tlHeroes.setupWithViewPager(pagerHeroes);
     }
 }
